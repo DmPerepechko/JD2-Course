@@ -60,5 +60,5 @@ public class DAOPeopleImpl implements DAOPeople {
         System.out.println("Man " + id + "was deleted");
         return 0;
     }
-    
+
 }
