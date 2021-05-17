@@ -7,15 +7,18 @@ public class Person {
     private String name;
     private String surname;
     private int age;
+    private int id_address;
 
-    public Person(int id, String name, String surname, int age) {
+   public Person(){
+
+   }
+
+    public Person(int id, String name, String surname, int age, int id_address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
-    }
-
-    public Person() {
+        this.id_address = id_address;
     }
 
     public int getId() {
@@ -50,26 +53,34 @@ public class Person {
         this.age = age;
     }
 
+    public int getId_address() {
+        return id_address;
+    }
+
+    public void setId_address(int id_address) {
+        this.id_address = id_address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && age == person.age && Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
+        return id == person.id && age == person.age && id_address == person.id_address && Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, age);
+        return Objects.hash(id, name, surname, age, id_address);
     }
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Person " +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
-                '}';
+                ", id_address=" + id_address;
     }
 }

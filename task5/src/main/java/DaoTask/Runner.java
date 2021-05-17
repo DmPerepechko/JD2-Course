@@ -22,7 +22,7 @@ public class Runner {
         //Создаем 5 адресов и 5 человек
 
         List<Address> addressList = addressUtil.makeAddress(5);
-        List<Person> peopleList = peopleUtil.makePeople(5);
+        List<Person> peopleList = peopleUtil.makePeople(5, addressList);
 
 
         for (Address address : addressList) {
