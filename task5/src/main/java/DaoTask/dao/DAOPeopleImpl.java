@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.List;
 
 public class DAOPeopleImpl implements DAOPeople {
-
     Connection conn;
     PreparedStatement ps;
 
