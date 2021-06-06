@@ -14,12 +14,12 @@ public class App {
         session.getTransaction().begin();
 
         City city = City.builder()
-                .cityName("Moscow")
+                .cityName("New York")
                 .build();
 
         Address address = Address.builder()
                 .city(city)
-                .street("Skryganova")
+                .street("Wall Street")
                 .build();
 
         Task task = Task.builder()
