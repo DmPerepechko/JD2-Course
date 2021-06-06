@@ -14,7 +14,7 @@ public class App {
         session.getTransaction().begin();
 
         City city = City.builder()
-                .cityName("Minsk")
+                .cityName("Moscow")
                 .build();
 
         Address address = Address.builder()
