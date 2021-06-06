@@ -14,16 +14,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @SuperBuilder
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TASK_TYPE", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("TASK")
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
 @Table(name = "task")
 
 public class Task implements Serializable {
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+@GeneratedValue(strategy = GenerationType.AUTO)
 private Integer id;
 
 @Column(name = "name")

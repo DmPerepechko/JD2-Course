@@ -12,7 +12,6 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@DiscriminatorValue("HOME_TASK")
 
 @Entity
 @Table(name = "hometask")
