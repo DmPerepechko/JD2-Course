@@ -12,8 +12,8 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@DiscriminatorValue("HOME_TASK")
 
+@PrimaryKeyJoinColumn(name = "task_id")
 @Entity
 @Table(name = "hometask")
 
