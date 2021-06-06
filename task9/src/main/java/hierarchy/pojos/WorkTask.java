@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@DiscriminatorValue("WORK_TASK")
 
 @Entity
 @Table(name = "worktask")
