@@ -14,10 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @SuperBuilder
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TASK_TYPE", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("TASK")
-
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "task")
 

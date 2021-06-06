@@ -14,12 +14,12 @@ public class App {
         session.getTransaction().begin();
 
         City city = City.builder()
-                .cityName("New York")
+                .cityName("London")
                 .build();
 
         Address address = Address.builder()
                 .city(city)
-                .street("Wall Street")
+                .street("Baker street")
                 .build();
 
         Task task = Task.builder()
@@ -38,7 +38,7 @@ public class App {
         WorkTask workTask = WorkTask.builder()
                 .name("work_task")
                 .description("work_task_1")
-                .cost("500")
+                .cost("1000")
                 .build();
 
             session.save(task);
