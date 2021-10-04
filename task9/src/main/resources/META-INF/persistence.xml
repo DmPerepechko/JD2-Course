@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+
+    <persistence-unit name="hierarchy_schema">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>hierarchy.pojos.Address</class>
+        <class>hierarchy.pojos.City</class>
+        <class>hierarchy.pojos.Task</class>
+        <class>hierarchy.pojos.HomeTask</class>
+        <class>hierarchy.pojos.WorkTask</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/hierarchy_schema?createDatabaseIfNotExist=true"/>
+            <property name="javax.persistence.jdbc.user" value="miper"/>
+            <property name="javax.persistence.jdbc.password" value="1234Sql"/>
+            <property name="hibernate.dialect.storage_engine" value="innodb"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <!--           <property name="hibernate.connection.pool_size" value="10"/>-->
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -3,6 +3,7 @@ package Hibernate;
 import Hibernate.service.AddressService;
 import Hibernate.service.PersonService;
 import Hibernate.util.HibernateUtil;
+import Hibernate.util.SessionUtil;
 
 import java.sql.SQLException;
 
@@ -22,6 +23,6 @@ public class App
         addressService.delete(1);
         personService.delete(1);
 
-        HibernateUtil.close();
+        SessionUtil.closeSessionFactory();
     }
 }

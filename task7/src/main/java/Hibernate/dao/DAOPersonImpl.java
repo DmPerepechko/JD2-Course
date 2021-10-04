@@ -3,6 +3,9 @@ package Hibernate.dao;
 import Hibernate.pojos.Address;
 import Hibernate.pojos.Person;
 import Hibernate.util.HibernateUtil;
+import Hibernate.util.SessionUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
@@ -10,49 +13,50 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DAOPersonImpl implements DAOPerson{
+
     @Override
     public void save(Person person) throws SQLException {
-        EntityManager em = HibernateUtil.getEntityManager();
-        em.getTransaction().begin();
-        em.persist(person);
-        em.getTransaction().commit();
+        Session session = SessionUtil.getSession();
+        session.getTransaction().begin();
+        session.save(person);
+        session.getTransaction().commit();
     }
 
     @Override
     public Person getByID(Serializable id) throws SQLException {
-        EntityManager em = HibernateUtil.getEntityManager();
-        em.getTransaction().begin();
-        Person person = em.find(Person.class, id);
-        em.getTransaction().commit();
+        Session session = SessionUtil.getSession();
+        session.getTransaction().begin();
+        Person person = session.get(Person.class, id);
+        session.getTransaction().commit();
         return person;
     }
 
     @Override
     public void update(Person person, Serializable id) throws SQLException {
-        EntityManager em = HibernateUtil.getEntityManager();
-        em.getTransaction().begin();
-        em.merge(person);
-        em.getTransaction().commit();
+        Session session = SessionUtil.getSession();
+        session.getTransaction().begin();
+        session.update(person);
+        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Serializable id) throws SQLException {
-        EntityManager em = HibernateUtil.getEntityManager();
-        em.getTransaction().begin();
-        Person person = em.find(Person.class, id);
+        Session session = SessionUtil.getSession();
+        session.getTransaction().begin();
+        Person person = session.get(Person.class, id);
         if (person != null) {
-            em.remove(person);
+            session.delete(person);
         }
-        em.getTransaction().commit();
+        session.getTransaction().commit();
     }
 
     @Override
     public List<Person> getAll() throws SQLException {
-        EntityManager em = HibernateUtil.getEntityManager();
-        em.getTransaction().begin();
+        Session session = SessionUtil.getSession();
+        session.getTransaction().begin();
         List<Person> personList =
-                em.createNativeQuery("SELECT * FROM dao_task.person", Person.class).getResultList();
-        em.getTransaction().commit();
+                session.createNativeQuery("SELECT * FROM dao_task.person", Person.class).getResultList();
+        session.getTransaction().commit();
         return personList;
     }
 }
