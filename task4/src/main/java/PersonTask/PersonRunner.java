@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public class PersonRunner {
 
     public static void main(String[] args) {
+        //generate collection of 100 Person items, filter, sort and extract distinct values
         List<Person> personList = PersonMethods.makePerson(100);
         personList.stream()
                 .filter(person -> person.getAge() < 21)
@@ -19,13 +20,7 @@ public class PersonRunner {
                 .distinct()
                 .collect(Collectors.toList());
 
-//        List<Person> personList = Stream.generate(()-> PersonMethods.makePerson(100))
-//                .filter(person -> person.getAge() < 21)
-//                .sorted(Comparator.comparing(Person::getSurname).thenComparing(Person::getName))
-//                .peek(System.out::println)
-//                .distinct()
-//                .collect(Collectors.toList());
-
+        //write and read collection items using text file
         Writable fileWriter = new FileOps();
         fileWriter.write(personList);
 
@@ -34,7 +29,7 @@ public class PersonRunner {
         List<String> namesFile = getNameSurname(peopleFromFile);
         namesFile.forEach(System.out::println);
 
-
+        //write and read collection using MySQL Database
         Writable baseWriter = new DataBaseOps();
         baseWriter.write(personList);
         List<Person> peopleFromBase = baseWriter.read();
@@ -42,12 +37,12 @@ public class PersonRunner {
         List<String> namesBase = getNameSurname(peopleFromBase);
         namesBase.forEach(System.out::println);
 
-
-//        ResourceBundle rb = ResourceBundle.getBundle("MessageBundle");
-//        System.out.println("\n"+"Вывод с помощью RB:");
-//        for (Person p : personList) {
-//            System.out.println(rb.getString("name") + " " + p.getName() + "; " + rb.getString("surname") + " " + p.getSurname());
-//        }
+        //print name and surname data using ResourceBundle
+        ResourceBundle rb = ResourceBundle.getBundle("MessageBundle");
+        System.out.println("\n"+"Вывод с помощью RB:");
+        for (Person p : personList) {
+            System.out.println(rb.getString("name") + " " + p.getName() + "; " + rb.getString("surname") + " " + p.getSurname());
+        }
     }
 
     public static List<String> getNameSurname(List<Person> list) {
